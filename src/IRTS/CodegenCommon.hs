@@ -15,7 +15,7 @@ import IRTS.Simplified
 
 import GHC.Generics (Generic)
 
-data DbgLevel = NONE | DEBUG | TRACE deriving Eq
+data DbgLevel = NONE | DEBUG | TRACE deriving (Eq, Show)
 data OutputType = Raw | Object | Executable deriving (Eq, Show, Generic)
 
 -- | Everything which might be needed in a code generator.
@@ -41,6 +41,6 @@ data CodegenInfo = CodegenInfo {
   , interfaces    :: Bool
   , exportDecls   :: [ExportIFace]
   , ttDecls       :: [(Name, TTDecl)]
-  }
+  } deriving Show
 
 type CodeGenerator = CodegenInfo -> IO ()
